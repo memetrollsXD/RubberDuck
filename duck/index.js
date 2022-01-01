@@ -53,7 +53,7 @@ function changeDisplay(view = "default") {
                 topic.innerHTML = '<option value="default" default disabled>Select a topic</option>';
                 querySnapshot.forEach(function (doc) {
                     // doc.data() is never undefined for query doc snapshots
-                    topic.innerHTML += `<option id="${doc.id}">${(doc.data().assignee == firebase.auth().currentUser.uid) ? '* ' : ''}${doc.data().language} — ${doc.data().topic}</option>`;
+                    if (doc.data().allowAssignee) topic.innerHTML += `<option id="${doc.id}">${(doc.data().assignee == firebase.auth().currentUser.uid) ? '* ' : ''}${doc.data().language} — ${doc.data().topic}</option>`;
                 });
                 topic.value = "default";
             });

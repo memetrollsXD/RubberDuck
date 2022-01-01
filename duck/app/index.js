@@ -36,6 +36,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 firebase.firestore().collection("messages").doc(urlParams.get('topic')).update({ assignee: firebase.auth().currentUser.uid });
                 sendSystemNotification("conv-join");
             }
+            if (!doc.data().allowAssignee) unassignBtn.click();
             for (let i = 0; i < messages.length; i++) {
                 const message = messages[i];
                 if (message.codeMode === 'undefined') message.codeMode = false;
@@ -44,7 +45,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                     case "LOCAL":
                         if (!document.hasFocus()) {
                             notifsound.play();
-                            notify.show(message.content, 'New message', '../../duck.png');
+                            // notify.show(message.content, 'New message', '../../duck.png');
                         }
                         messageElement.innerHTML = `
                         <div class="media media-chat"> <img class="avatar smaller_duck" src="${generateAvatarByUID(doc.id)}" alt="...">

@@ -44,6 +44,7 @@ start.onclick = function () {
         } else {
             firebase.firestore().collection('messages').doc(firebase.auth().currentUser.uid).set({
                 assignee: 'undefined',
+                allowAssignee: false,
                 created: Date.now(),
                 language: language.value || "???",
                 topic: topic.value || "???",

@@ -13,6 +13,7 @@ const chatContent = document.getElementById('chat-content');
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendMessage');
 const solvedBtn = document.getElementById('solvedBtn');
+const volunteerToggle = document.getElementById('volunteerToggle');
 let codeMode = false;
 let pingsound = new Audio('../notif.ogg');
 pingsound.volume = 1;
@@ -30,6 +31,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             console.log(doc.data());
             if (doc.exists) {
                 const messages = doc.data().messages;
+                doc.data().allowAssignee ? volunteerToggle.checked = true : volunteerToggle.checked = false;
                 chatContent.innerHTML = '';
                 for (let i = 0; i < messages.length; i++) {
                     const message = messages[i];
@@ -39,7 +41,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                         case "REMOTE":
                             if (!document.hasFocus()) {
                                 pingsound.play();
-                                notify.show(message.content, 'Duck', '../duck.png');
+                                // notify.show(message.content, 'Duck', '../duck.png');
                             }
                             messageElement.innerHTML = `
                         <div class="media media-chat"> <img class="avatar smaller_duck" src="${generateAvatarByUID(doc.data().assignee)}" alt="...">
@@ -153,7 +155,7 @@ function sendSystemNotification(type) {
                 })
             }).then(() => {
                 firebase.firestore().collection("messages").doc(firebase.auth().currentUser.uid).delete();
-            }).catch((error) => {window.location.href = '../'});
+            }).catch((error) => { window.location.href = '../' });
             break;
         default:
             console.warn("Unknown notification type");
@@ -233,3 +235,4 @@ document.onkeydown = function (e) {
         messageInput.focus();
     }
 }
+volunteerToggle.onclick = () => volunteerToggle.checked ? firebase.firestore().collection("messages").doc(firebase.auth().currentUser.uid).update({ allowAssignee: true }) : firebase.firestore().collection("messages").doc(firebase.auth().currentUser.uid).update({ allowAssignee: false });
