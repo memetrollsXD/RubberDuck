@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RubberDuck</title>
+    <link type="text/css" rel="stylesheet" href="../message.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="embed.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+</head>
+
+<body>
+    <div class="card card-bordered" style="margin: 0; background-color: #2a2a2a;">
+        <div class="card-header" style="padding: .5rem 1.25rem; padding-top: .3rem; padding-bottom: 0;">
+            <img src="../duck.svg" class="card-title smaller_duck" /> <div><a class="btn btn-xs btn-success" href="#" id="solvedBtn">Solve</a></div>
+        </div>
+        <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important;">
+            <br><br><br><br><br><br><br><br><br><br><br>
+            <h1 style="text-align: center; color: white;"><img src="../duck_loading.gif" alt="Loading..."/></h1><br>
+            <p style="text-align: center; color: white;">Taking too long? <a style="font-size: 16px;" href="https://memetrolls.net">Send me a message!</a></p>
+        </div>
+        <div class="publisher" style="border-top: 1px solid #3a3a3a !important; z-index: 1;"> <textarea
+                class="publisher-input" type="text" placeholder="Write something" id="messageInput" data-gramm="false"
+                style="height: 30px; max-height: 320px; width: 1207.530px;"></textarea>
+            <a class="publisher-btn" id="codeBtn" href="#"><i class="fa fa-terminal file-browser"></i></a> 
+            <a class="publisher-btn" href="#" data-abc="true"><i class="fa fa-smile"></i></a> <a
+                class="publisher-btn text-info" href="#" data-abc="true" id="sendMessage"><i
+                    class="fa fa-paper-plane"></i></a>
+        </div>
+    </div>
+    </div>
+</body>
+<link type="text/css" rel="stylesheet" href="../index.css" />
+<script src="../notificationHandler.js"></script>
+<script src="index.js"></script>
+
+</html>

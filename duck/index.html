@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RubberDuck</title>
+    <link type="text/css" rel="stylesheet" href="index.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-firestore.js"></script>
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form" id="loginForm">
+            <img src="../duck.svg" class="small_duck" /></object>
+            <h5 id="email" class="emailText loggedInLinks">RubberDuck</h5><br>
+            <label for="topic">Available Topics</label><br>
+            <select type="topic" id="topic">
+                <option value="default" default disabled>Select a topic</option>
+            </select><br>
+            <button id="start">Start</button>
+            <br>
+            <p>Assigned topics are marked with:  <code style="color: orange; background-color: #1a1a1a;">*</code></p>
+            <a style="float: left;" href="../">« Back</a>
+        </div>
+    </div>
+</body>
+<script src="index.js"></script>
+
+</html>
